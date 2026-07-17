@@ -54,7 +54,7 @@
   <div class="wrap">
     <p class="kicker">Dead Vector: Space Shooter</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 2026-06-30</p>
+    <p class="updated">Last updated: 2026-07-16</p>
   </div>
 </header>
 
@@ -70,7 +70,7 @@
   <ul>
     <li>We create an account so you can save your progress and sync it across devices.</li>
     <li>We use Google Firebase (Authentication, Analytics, Crashlytics) and our own backend.</li>
-    <li>We do <strong>not</strong> sell your data and do <strong>not</strong> share it with third parties for advertising.</li>
+    <li>We show ads via <strong>Google AdMob</strong>. We do <strong>not</strong> sell your data; in the EEA/UK (and on iOS) we ask your consent before an advertising identifier is used to personalize ads.</li>
     <li>The game is intended for players <strong>aged 16 and over</strong> and is not directed to children.</li>
     <li>You can <strong>delete your account and all associated data</strong> at any time
       (<a href="#delete-account">see below</a>).</li>
@@ -87,30 +87,43 @@
       <tr><td><strong>Gameplay data / telemetry</strong> — levels played, results, in-game economy events, tied to your Player ID</td><td>Run the game (progress, rewards), balance and improve levels</td><td>Contract; Legitimate interest (Art. 6(1)(f))</td></tr>
       <tr><td><strong>Analytics</strong> — a pseudonymous app instance ID and usage events (Firebase Analytics), associated with your Firebase UID</td><td>Understand how the game is used and improve it</td><td>Consent (Art. 6(1)(a)) — opt-in, see <em>Analytics &amp; your choices</em></td></tr>
       <tr><td><strong>Crash &amp; performance data</strong> — crash logs, device model, OS version (Firebase Crashlytics)</td><td>Diagnose crashes and keep the game stable</td><td>Consent (Art. 6(1)(a)) — same opt-in</td></tr>
+      <tr><td><strong>Advertising ID</strong> (Android GAID / iOS IDFA) + ad-interaction &amp; coarse signals (e.g. IP-derived approximate location used by ad networks)</td><td>Show and measure ads; if you consent, personalize them</td><td>Consent (Art. 6(1)(a)) for personalized ads / advertising IDs in EEA/UK; Legitimate interest for non-personalized</td></tr>
       <tr><td><strong>Apple sign-in token</strong> (iOS only) — an encrypted Apple refresh token, stored at rest (AES-256-GCM)</td><td>Required so we can revoke Apple access when you delete your account</td><td>Contract / Legitimate interest</td></tr>
     </tbody>
   </table>
   </div>
-  <p>We do <strong>not</strong> collect precise location, contacts, photos, microphone, or advertising
-  identifiers. The game currently contains <strong>no ads</strong>; if ads are added later, this policy
-  will be updated and you will be asked for consent where required.</p>
+  <p>We do <strong>not</strong> collect precise location, contacts, photos, or microphone.</p>
 
   <h2>Who processes your data</h2>
   <ul>
     <li><strong>Google (Firebase / Google Cloud)</strong> — Authentication, Analytics, Crashlytics, and our
       backend hosting. Google acts as our processor — see
       <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</li>
+    <li><strong>Google AdMob (and its advertising / mediation partners)</strong> — when ads are shown, your
+      advertising identifier and ad-interaction/device signals are <strong>shared</strong> with AdMob to serve
+      and measure ads, and — only with your consent — to personalize them. See <em>Advertising</em> below.</li>
     <li><strong>Neon (database) / Google Cloud Run (backend)</strong> — store and process your account and
       gameplay data.</li>
   </ul>
   <p>These providers operate servers in the <strong>EU and the United States</strong>, so your data may be
   transferred to the US. Such transfers rely on the appropriate safeguards (e.g. Standard Contractual Clauses).</p>
-  <p>We do <strong>not</strong> share your data with third parties for their own marketing.</p>
+  <p>Apart from Google AdMob for advertising (described below), we do <strong>not</strong> share your data
+  with third parties for their own marketing.</p>
 
   <h2>Analytics &amp; your choices</h2>
   <p>Analytics and crash reporting are <strong>off until you choose</strong>. On first launch we ask whether
   to share usage and crash data; you can change your choice anytime in the game's settings. When off, the
-  game collects no analytics or crash data from your device.</p>
+  game collects no analytics or crash data from your device. This choice is <strong>separate</strong> from
+  the advertising consent described below.</p>
+
+  <h2>Advertising</h2>
+  <p>We use <strong>Google AdMob</strong> (and its mediation/advertising partners) to show ads. AdMob may
+  collect your advertising identifier and device/usage signals to serve and measure ads, and — only with
+  your consent — to personalize them. This is <strong>sharing</strong> with a third party for advertising.
+  In the EEA/UK we ask for your choice through a Google-certified consent prompt (UMP) <strong>before</strong>
+  serving ads; on iOS we also ask via Apple's <strong>App Tracking Transparency</strong> before using your
+  IDFA for personalized ads. If you decline, we may still show non-personalized ads. You can change your
+  choice anytime in the game's settings (privacy options) or your device's privacy settings.</p>
 
   <h2>Data retention</h2>
   <p>We keep your account and gameplay data for as long as your account exists. When you delete your account,
@@ -141,7 +154,8 @@
   <h2>Children</h2>
   <p>Dead Vector: Space Shooter is intended for players <strong>aged 16 and over</strong> and is <strong>not</strong> directed
   to children. We do not knowingly collect data from anyone under 16. If you believe someone under 16 has
-  provided us data, contact us and we will delete it.</p>
+  provided us data, contact us and we will delete it. Ads are configured for this audience: the app is
+  <strong>not</strong> a Families/child-directed app, and we instruct AdMob not to treat traffic as child-directed.</p>
 
   <h2>Security</h2>
   <p>Data in transit is protected with HTTPS/TLS. The Apple sign-in token (iOS) is encrypted at rest. Our
@@ -155,7 +169,6 @@
   <p><strong>Dmitrij Bučkovský</strong>, trading as <strong>Belligerator</strong> (Czech Republic) —
   <a href="mailto:dead.vector.dev@gmail.com">dead.vector.dev@gmail.com</a>.</p>
 
-  
   <footer>
     <a href="terms.html">Terms of Service</a> · © 2026 Belligerator · Dead Vector: Space Shooter · <code>cz.belli.madshooter</code>
   </footer>
