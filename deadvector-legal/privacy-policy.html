@@ -54,7 +54,7 @@
   <div class="wrap">
     <p class="kicker">Dead Vector: Space Shooter</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 2026-07-16</p>
+    <p class="updated">Last updated: 2026-07-28</p>
   </div>
 </header>
 
@@ -71,6 +71,7 @@
     <li>We create an account so you can save your progress and sync it across devices.</li>
     <li>We use Google Firebase (Authentication, Analytics, Crashlytics) and our own backend.</li>
     <li>We show ads via <strong>Google AdMob</strong>. We do <strong>not</strong> sell your data; in the EEA/UK (and on iOS) we ask your consent before an advertising identifier is used to personalize ads.</li>
+    <li>We offer optional <strong>in-app purchases</strong> (crystals, Remove Ads, music packs), processed by Google Play / Apple and verified via <strong>RevenueCat</strong>; we never receive or store your payment-card details.</li>
     <li>The game is intended for players <strong>aged 16 and over</strong> and is not directed to children.</li>
     <li>You can <strong>delete your account and all associated data</strong> at any time
       (<a href="#delete-account">see below</a>).</li>
@@ -89,6 +90,7 @@
       <tr><td><strong>Crash &amp; performance data</strong> — crash logs, device model, OS version (Firebase Crashlytics)</td><td>Diagnose crashes and keep the game stable</td><td>Consent (Art. 6(1)(a)) — same opt-in</td></tr>
       <tr><td><strong>Advertising ID</strong> (Android GAID / iOS IDFA) + ad-interaction &amp; coarse signals (e.g. IP-derived approximate location used by ad networks)</td><td>Show and measure ads; if you consent, personalize them</td><td>Consent (Art. 6(1)(a)) for personalized ads / advertising IDs in EEA/UK; Legitimate interest for non-personalized</td></tr>
       <tr><td><strong>Apple sign-in token</strong> (iOS only) — an encrypted Apple refresh token, stored at rest (AES-256-GCM)</td><td>Required so we can revoke Apple access when you delete your account</td><td>Contract / Legitimate interest</td></tr>
+      <tr><td><strong>Purchase data</strong> — products bought, store purchase token / receipt, transaction timestamps, tied to your Player ID (via Google Play Billing / Apple StoreKit and <strong>RevenueCat</strong>)</td><td>Deliver and restore your purchases, prevent fraud, support, keep legally required records</td><td>Contract (Art. 6(1)(b)); Legal obligation (tax/accounting)</td></tr>
     </tbody>
   </table>
   </div>
@@ -104,6 +106,12 @@
       and measure ads, and — only with your consent — to personalize them. See <em>Advertising</em> below.</li>
     <li><strong>Neon (database) / Google Cloud Run (backend)</strong> — store and process your account and
       gameplay data.</li>
+    <li><strong>RevenueCat</strong> — verifies your in-app purchases and tracks which items your account owns,
+      on our behalf (our processor). It receives the store purchase token / receipt and your pseudonymous
+      Player ID; its servers are in the United States. See RevenueCat's privacy policy.</li>
+    <li><strong>Google Play Billing / Apple App Store</strong> — process the payment itself. We do
+      <strong>not</strong> receive or store your payment-card details; we only receive the store's purchase
+      token / receipt and your entitlement. Refunds are handled by the store.</li>
   </ul>
   <p>These providers operate servers in the <strong>EU and the United States</strong>, so your data may be
   transferred to the US. Such transfers rely on the appropriate safeguards (e.g. Standard Contractual Clauses).</p>
@@ -124,6 +132,13 @@
   serving ads; on iOS we also ask via Apple's <strong>App Tracking Transparency</strong> before using your
   IDFA for personalized ads. If you decline, we may still show non-personalized ads. You can change your
   choice anytime in the game's settings (privacy options) or your device's privacy settings.</p>
+
+  <h2>In-app purchases</h2>
+  <p>The game offers optional purchases — crystals, Remove Ads, and music packs. Payments are processed by
+  <strong>Google Play</strong> or the <strong>Apple App Store</strong>; we never receive or store your card
+  details. To deliver, restore, and protect purchases we use <strong>RevenueCat</strong>, which verifies the
+  store receipt and records which items your account owns (linked to your pseudonymous Player ID). Restoring
+  purchases and refunds go through the store.</p>
 
   <h2>Data retention</h2>
   <p>We keep your account and gameplay data for as long as your account exists. When you delete your account,
