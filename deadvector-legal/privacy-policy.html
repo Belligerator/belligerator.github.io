@@ -54,7 +54,7 @@
   <div class="wrap">
     <p class="kicker">Dead Vector: Space Shooter</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 2026-08-12</p>
+    <p class="updated">Last updated: 2026-09-24</p>
   </div>
 </header>
 
@@ -147,9 +147,16 @@
   purchases and refunds go through the store.</p>
 
   <h2>Data retention</h2>
-  <p>We keep your account and gameplay data for as long as your account exists. When you delete your account,
-  the associated data is deleted as described below. Crash/analytics data is retained for a limited period
-  according to Firebase's default retention and then deleted or anonymised.</p>
+  <p>We keep your account, game progress and purchases for as long as your account exists. Detailed gameplay
+  records are deleted automatically sooner: individual level sessions after <strong>30 days</strong> (sessions
+  flagged by our anti-cheat checks after <strong>180 days</strong>, so we can investigate cheating) and
+  per-level run telemetry after <strong>90 days</strong>. When you delete your account, the associated data is
+  deleted as described below. Crash/analytics data is retained for a limited period according to Firebase's
+  default retention and then deleted or anonymised.</p>
+  <p><strong>Backups.</strong> To recover from data loss, we keep backups of our database in Google Cloud, and
+  our database provider keeps a short recovery history of a few days. Data you delete, including a deleted
+  account, can remain in these backups for up to <strong>90 days</strong>, after which it is deleted
+  automatically. Backups are used for nothing else.</p>
 
   <div class="callout" id="delete-account">
     <h2>Deleting your account and data</h2>
@@ -162,8 +169,10 @@
         your account, or include your <strong>Player ID</strong> (shown in the app under Profile), and we will
         delete your data within 30 days.</li>
     </ul>
-    <p>Deletion removes your <code>players</code> record, your Firebase user, and any stored Apple token.
-    Residual analytics identifiers are purged according to Firebase retention settings.</p>
+    <p>Deletion removes your <code>players</code> record together with all game data linked to it, your
+    Firebase user, and any stored Apple token. If Firebase is temporarily unavailable, the Firebase user is
+    deleted later by an automatic retry. Residual analytics identifiers are purged according to Firebase
+    retention settings.</p>
   </div>
 
   <h2>Your rights (EU/EEA — GDPR)</h2>
