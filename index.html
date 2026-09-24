@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <title>Dead Vector: Space Shooter</title>
+    <meta
+      name="description"
+      content="Dead Vector: Space Shooter — a retro 80s neon arcade space shooter. Blast through enemy waves, upgrade your ship, survive the vector. Free to play on Android and iOS."
+    />
+    <style>
+      :root {
+        --bg: #0b0d12;
+        --bg2: #10141f;
+        --ink: #eaf0ff;
+        --muted: #9aa6bd;
+        --line: #20283a;
+        --accent: #00c8a0;
+        --accent-2: #1b9bff;
+        --card: #121826;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          16px/1.6 -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        overflow-x: hidden;
+      }
+      a {
+        color: var(--accent-2);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .wrap {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 22px;
+      }
+
+      /* Hero */
+      header.hero {
+        position: relative;
+        text-align: center;
+        padding: 80px 0 64px;
+        background:
+          radial-gradient(
+            1100px 520px at 50% -10%,
+            rgba(0, 200, 160, 0.22),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 480px at 80% 10%,
+            rgba(27, 155, 255, 0.18),
+            transparent 60%
+          ),
+          linear-gradient(180deg, #0b0d12 0%, #0e1220 100%);
+        border-bottom: 1px solid var(--line);
+      }
+      .kicker {
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: var(--accent);
+        margin: 0 0 14px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(34px, 7vw, 66px);
+        line-height: 1.02;
+        letter-spacing: -0.01em;
+        font-weight: 800;
+        background: linear-gradient(90deg, #eafffb, #7ef0d8 40%, #7cc4ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 40px rgba(0, 200, 160, 0.15);
+      }
+      .tagline {
+        margin: 18px auto 0;
+        max-width: 560px;
+        font-size: clamp(16px, 2.6vw, 20px);
+        color: var(--muted);
+      }
+
+      /* Store buttons */
+      .stores {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 34px 0 0;
+      }
+      .store-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 210px;
+        padding: 12px 20px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: #0f1420;
+        color: var(--ink);
+        transition:
+          transform 0.12s ease,
+          border-color 0.12s ease,
+          box-shadow 0.12s ease;
+      }
+      .store-btn:hover {
+        text-decoration: none;
+        transform: translateY(-2px);
+        border-color: var(--accent);
+        box-shadow: 0 10px 30px rgba(0, 200, 160, 0.12);
+      }
+      .store-btn .glyph {
+        width: 26px;
+        height: 26px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .store-btn .glyph svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        fill: currentColor;
+      }
+      .store-btn .label {
+        text-align: left;
+      }
+      .store-btn .small {
+        display: block;
+        font-size: 11px;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .store-btn .big {
+        display: block;
+        font-size: 17px;
+        font-weight: 700;
+      }
+      .soon {
+        opacity: 0.62;
+      }
+      .soon .big::after {
+        content: ' · soon';
+        font-size: 12px;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      /* Sections */
+      section {
+        padding: 64px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      h2 {
+        font-size: clamp(22px, 4vw, 30px);
+        margin: 0 0 8px;
+        text-align: center;
+        letter-spacing: -0.01em;
+      }
+      .sub {
+        color: var(--muted);
+        text-align: center;
+        margin: 0 auto 40px;
+        max-width: 560px;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 24px;
+      }
+      .card .ic {
+        font-size: 26px;
+      }
+      .card h3 {
+        margin: 14px 0 6px;
+        font-size: 18px;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      /* Screenshots (placeholder phone frames — swap in real captures) */
+      .shots {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .phone {
+        width: 200px;
+        height: 420px;
+        border-radius: 30px;
+        border: 1px solid var(--line);
+        padding: 10px;
+        background: linear-gradient(180deg, #0e1422, #0b0f18);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+      .phone .screen {
+        width: 100%;
+        height: 100%;
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+        padding: 14px;
+        background:
+          radial-gradient(
+            300px 200px at 50% 20%,
+            rgba(0, 200, 160, 0.2),
+            transparent 60%
+          ),
+          radial-gradient(
+            280px 220px at 60% 90%,
+            rgba(27, 155, 255, 0.18),
+            transparent 60%
+          ),
+          #0a0e16;
+        border: 1px solid #182236;
+      }
+
+      /* Download / QR */
+      .qr-row {
+        display: flex;
+        gap: 26px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .qr {
+        background: #fff;
+        border-radius: 16px;
+        padding: 16px;
+        text-align: center;
+        width: 200px;
+      }
+      .qr img {
+        display: block;
+        width: 168px;
+        height: 168px;
+        margin: 0 auto;
+      }
+      .qr .cap {
+        color: #0b0d12;
+        font-size: 13px;
+        font-weight: 700;
+        margin-top: 10px;
+      }
+      .qr.soon-box {
+        background: #0f1420;
+        border: 1px dashed var(--line);
+      }
+      .qr.soon-box .ph {
+        width: 168px;
+        height: 168px;
+        margin: 0 auto;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        font-size: 12px;
+        border: 1px dashed var(--line);
+      }
+      .qr.soon-box .cap {
+        color: var(--muted);
+      }
+
+      footer {
+        padding: 40px 0 60px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      footer a {
+        color: var(--muted);
+      }
+      footer .legal {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <p class="kicker">Belligerator</p>
+        <h1>Dead Vector<br />Space Shooter</h1>
+        <p class="tagline">
+          A retro 80s neon arcade shooter. Blast through enemy waves, upgrade
+          your ship, and survive the vector.
+        </p>
+        <div class="stores">
+          <!-- Google Play app is live; App Store link resolves once the iOS review is approved. -->
+          <a
+            class="store-btn"
+            href="https://play.google.com/store/apps/details?id=cz.belli.madshooter"
+          >
+            <span class="glyph" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M2 3.65629C2 2.15127 3.59967 1.18549 4.93149 1.88645L20.7844 10.2301C22.2091 10.9799 22.2091 13.0199 20.7844 13.7698L4.9315 22.1134C3.59968 22.8144 2 21.8486 2 20.3436V3.65629ZM19.8529 11.9999L16.2682 10.1132L14.2243 11.9999L16.2682 13.8866L19.8529 11.9999ZM14.3903 14.875L12.75 13.3608L6.75782 18.8921L14.3903 14.875ZM12.75 10.639L14.3903 9.12488L6.75782 5.10777L12.75 10.639ZM4 5.28391L11.2757 11.9999L4 18.7159V5.28391Z"
+                  ></path>
+                </g>
+              </svg>
+            </span>
+            <span class="label"
+              ><span class="small">Get it on</span
+              ><span class="big">Google Play</span></span
+            >
+          </a>
+          <a class="store-btn" href="https://apps.apple.com/app/id6785072656">
+            <span class="glyph" aria-hidden="true">
+              <svg
+                fill="#000000"
+                viewBox="-52.01 0 560.035 560.035"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M380.844 297.529c.787 84.752 74.349 112.955 75.164 113.314-.622 1.988-11.754 40.191-38.756 79.652-23.343 34.117-47.568 68.107-85.731 68.811-37.499.691-49.557-22.236-92.429-22.236-42.859 0-56.256 21.533-91.753 22.928-36.837 1.395-64.889-36.891-88.424-70.883-48.093-69.53-84.846-196.475-35.496-282.165 24.516-42.554 68.328-69.501 115.882-70.192 36.173-.69 70.315 24.336 92.429 24.336 22.1 0 63.59-30.096 107.208-25.676 18.26.76 69.517 7.376 102.429 55.552-2.652 1.644-61.159 35.704-60.523 106.559M310.369 89.418C329.926 65.745 343.089 32.79 339.498 0 311.308 1.133 277.22 18.785 257 42.445c-18.121 20.952-33.991 54.487-29.709 86.628 31.421 2.431 63.52-15.967 83.078-39.655"
+                  ></path>
+                </g>
+              </svg>
+            </span>
+            <span class="label"
+              ><span class="small">Get it on</span
+              ><span class="big">App Store</span></span
+            >
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="wrap">
+        <h2>Enter the vector</h2>
+        <p class="sub">
+          Fast, punchy, and built for one hand. No fluff — just you, your ship,
+          and endless neon.
+        </p>
+        <div class="features">
+          <div class="card">
+            <div class="ic">🚀</div>
+            <h3>Arcade action</h3>
+            <p>
+              Dodge, weave, and shred waves of enemy ships and bosses across
+              hand-crafted levels.
+            </p>
+          </div>
+          <div class="card">
+            <div class="ic">🛠️</div>
+            <h3>Upgrade your ship</h3>
+            <p>
+              Earn coins, unlock modules, and tune a loadout that fits your
+              style.
+            </p>
+          </div>
+          <div class="card">
+            <div class="ic">🌌</div>
+            <h3>80s neon vibe</h3>
+            <p>
+              Retro CRT glow, parallax starfields, and a synth-charged mood.
+            </p>
+          </div>
+          <div class="card">
+            <div class="ic">🎮</div>
+            <h3>Free to play</h3>
+            <p>
+              Jump in for free. Optional rewarded ads and purchases — never pay
+              to keep playing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>See it in motion</h2>
+        <p class="sub">
+          A taste of the cockpit. (Screenshots coming — drop real captures in
+          here.)
+        </p>
+        <div class="shots">
+          <div class="phone"><div class="screen">Screenshot 1</div></div>
+          <div class="phone"><div class="screen">Screenshot 2</div></div>
+          <div class="phone"><div class="screen">Screenshot 3</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="wrap">
+        <h2>Download</h2>
+        <p class="sub">Scan to grab it on your phone.</p>
+        <div class="qr-row">
+          <!-- QR rendered by an external generator; swap for static PNGs committed alongside this file if you prefer no third-party dependency. -->
+          <div class="qr">
+            <img
+              alt="Google Play QR"
+              src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=0&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcz.belli.madshooter"
+            />
+            <div class="cap">Google Play</div>
+          </div>
+          <div class="qr">
+            <img
+              alt="App Store QR"
+              src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=0&data=https%3A%2F%2Fapps.apple.com/us/app/dead-vector-space-shooter/id6785072656"
+            />
+            <div class="cap">App Store</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div class="legal">
+          <a href="privacy-policy.html">Privacy Policy</a> ·
+          <a href="terms.html">Terms of Service</a> ·
+          <a href="support.html">Support</a>
+        </div>
+        © 2026 Belligerator · Dead Vector: Space Shooter ·
+        <a href="mailto:dead.vector.dev@gmail.com">dead.vector.dev@gmail.com</a>
+      </div>
+    </footer>
+  </body>
+</html>
