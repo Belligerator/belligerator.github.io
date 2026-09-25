@@ -73,8 +73,10 @@
     <li>We show ads via <strong>Google AdMob</strong>. We do <strong>not</strong> sell your data; in the EEA/UK (and on iOS) we ask your consent before an advertising identifier is used to personalize ads.</li>
     <li>We offer optional <strong>in-app purchases</strong> (crystals, Remove Ads, music packs), processed by Google Play / Apple and verified via <strong>RevenueCat</strong>; we never receive or store your payment-card details.</li>
     <li>The game is intended for players <strong>aged 16 and over</strong> and is not directed to children.</li>
-    <li>You can <strong>delete your account and all associated data</strong> at any time
-      (<a href="#delete-account">see below</a>).</li>
+    <li>You can <strong>delete your account and your data</strong> at any time
+      (<a href="#delete-account">see below</a>). The only exception: if you bought something, a record
+      of your purchases is kept for up to 3 years after your last purchase
+      (<a href="#purchase-records">see <em>Data retention</em></a>).</li>
   </ul>
 
   <h2>What we collect and why</h2>
@@ -90,7 +92,7 @@
       <tr><td><strong>Crash &amp; performance data</strong> — crash logs, device model, OS version (Firebase Crashlytics)</td><td>Diagnose crashes and keep the game stable</td><td>Legitimate interest (Art. 6(1)(f)) — on by default, you can switch it off, see <em>Analytics, crash reports &amp; your choices</em></td></tr>
       <tr><td><strong>Advertising ID</strong> (Android GAID / iOS IDFA) + ad-interaction &amp; coarse signals (e.g. IP-derived approximate location used by ad networks)</td><td>Show and measure ads; if you consent, personalize them</td><td>Consent (Art. 6(1)(a)) for personalized ads / advertising IDs in EEA/UK; Legitimate interest for non-personalized</td></tr>
       <tr><td><strong>Apple sign-in token</strong> (iOS only) — an encrypted Apple refresh token, stored at rest (AES-256-GCM)</td><td>Required so we can revoke Apple access when you delete your account</td><td>Contract / Legitimate interest</td></tr>
-      <tr><td><strong>Purchase data</strong> — products bought, store purchase token / receipt, transaction timestamps, tied to your Player ID (via Google Play Billing / Apple StoreKit and <strong>RevenueCat</strong>)</td><td>Deliver and restore your purchases, prevent fraud, support, keep legally required records</td><td>Contract (Art. 6(1)(b)); Legal obligation (tax/accounting)</td></tr>
+      <tr><td><strong>Purchase data</strong> — products bought, store purchase token / receipt, transaction timestamps, tied to your Player ID (via Google Play Billing / Apple StoreKit and <strong>RevenueCat</strong>)</td><td>Deliver and restore your purchases, prevent fraud, support, keep legally required records</td><td>Contract (Art. 6(1)(b)); Legal obligation (tax/accounting); Legitimate interest — refunds, disputes and legal claims (Art. 6(1)(f), Art. 17(3)(e))</td></tr>
     </tbody>
   </table>
   </div>
@@ -157,6 +159,16 @@
   our database provider keeps a short recovery history of a few days. Data you delete, including a deleted
   account, can remain in these backups for up to <strong>90 days</strong>, after which it is deleted
   automatically. Backups are used for nothing else.</p>
+  <p id="purchase-records"><strong>Purchase records.</strong> When you delete your account, we keep the
+  purchase history that our purchase processor RevenueCat holds for your former Player ID: which products you
+  bought, when and for what price, the store's transaction IDs and purchase receipts, and basic technical data
+  RevenueCat stores with them, such as country and platform. In our own database we keep only your former
+  Player ID(s), the date of your last purchase and, if you merged accounts, the link between those accounts'
+  Player IDs — so we know which records to delete and when. We keep all this only to handle refunds, disputes
+  and legal claims related to those purchases (our legitimate interest; Art. 17(3)(e) GDPR), and for no longer
+  than <strong>3 years</strong> after your last purchase — the general limitation period under Czech law. If
+  you never bought anything, nothing is kept. Everything else is deleted as described in
+  <a href="#delete-account"><em>Deleting your account and data</em></a> below.</p>
 
   <div class="callout" id="delete-account">
     <h2>Deleting your account and data</h2>
@@ -169,9 +181,14 @@
         your account, or include your <strong>Player ID</strong> (shown in the app under Profile), and we will
         delete your data within 30 days.</li>
     </ul>
+    <p>If you play as a guest (not signed in with Google or Apple) and sign out, your guest account is deleted
+    in the same way, because nothing could sign back into it.</p>
     <p>Deletion removes your <code>players</code> record together with all game data linked to it, your
-    Firebase user, and any stored Apple token. If Firebase is temporarily unavailable, the Firebase user is
-    deleted later by an automatic retry. Residual analytics identifiers are purged according to Firebase
+    Firebase user, and any stored Apple token. The one exception is the record of your purchases, kept
+    for up to 3 years after your last purchase to handle refunds and disputes (see
+    <a href="#purchase-records"><em>Purchase records</em></a> under <em>Data retention</em>); if you never bought
+    anything, nothing is kept. If Firebase is temporarily unavailable, we complete the
+    deletion of the Firebase user later. Residual analytics identifiers are purged according to Firebase
     retention settings.</p>
   </div>
 
