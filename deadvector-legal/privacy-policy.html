@@ -54,7 +54,7 @@
   <div class="wrap">
     <p class="kicker">Dead Vector: Space Shooter</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 2026-09-24</p>
+    <p class="updated">Last updated: 2026-09-25</p>
   </div>
 </header>
 
@@ -86,8 +86,9 @@
     <tbody>
       <tr><td><strong>Account identifiers</strong> — Firebase user ID (UID), in-game Player ID</td><td>Create your account, save and sync progress</td><td>Contract (Art. 6(1)(b))</td></tr>
       <tr><td><strong>Email address</strong> — when you sign in with Google or Apple</td><td>Link your account so you don't lose progress; we receive it via the sign-in provider and do <strong>not</strong> store it in our own database</td><td>Contract (Art. 6(1)(b))</td></tr>
-      <tr><td><strong>Profile data</strong> — nickname, chosen avatar</td><td>Display your pilot identity in-game</td><td>Contract</td></tr>
+      <tr><td><strong>Profile data</strong> — the nickname you choose (an automatic <code>Pilot-…</code> name until you change it), chosen avatar</td><td>Display your pilot identity in-game</td><td>Contract</td></tr>
       <tr><td><strong>Gameplay data / telemetry</strong> — levels played, results, in-game economy events, tied to your Player ID</td><td>Run the game (progress, rewards), balance and improve levels</td><td>Contract; Legitimate interest (Art. 6(1)(f))</td></tr>
+      <tr><td><strong>Feedback</strong> — only if you send it: what you write to us about the game or a level, a thumbs up / down, and your app version, platform, device model and OS version, tied to your Player ID</td><td>Read your feedback and improve the game</td><td>Legitimate interest (Art. 6(1)(f))</td></tr>
       <tr><td><strong>Analytics</strong> — a pseudonymous app instance ID and usage events (Firebase Analytics), associated with your Firebase UID</td><td>Understand how the game is used and improve it</td><td>Consent (Art. 6(1)(a)) — opt-in, see <em>Analytics &amp; your choices</em></td></tr>
       <tr><td><strong>Crash &amp; performance data</strong> — crash logs, device model, OS version (Firebase Crashlytics)</td><td>Diagnose crashes and keep the game stable</td><td>Legitimate interest (Art. 6(1)(f)) — on by default, you can switch it off, see <em>Analytics, crash reports &amp; your choices</em></td></tr>
       <tr><td><strong>Advertising ID</strong> (Android GAID / iOS IDFA) + ad-interaction &amp; coarse signals (e.g. IP-derived approximate location used by ad networks)</td><td>Show and measure ads; if you consent, personalize them</td><td>Consent (Art. 6(1)(a)) for personalized ads / advertising IDs in EEA/UK; Legitimate interest for non-personalized</td></tr>
@@ -149,12 +150,13 @@
   purchases and refunds go through the store.</p>
 
   <h2>Data retention</h2>
-  <p>We keep your account, game progress and purchases for as long as your account exists. Detailed gameplay
+  <p>We keep your account, game progress, feedback and purchases for as long as your account exists. Detailed gameplay
   records are deleted automatically sooner: individual level sessions after <strong>30 days</strong> (sessions
   flagged by our anti-cheat checks after <strong>180 days</strong>, so we can investigate cheating) and
   per-level run telemetry after <strong>90 days</strong>. When you delete your account, the associated data is
-  deleted as described below. Crash/analytics data is retained for a limited period according to Firebase's
-  default retention and then deleted or anonymised.</p>
+  deleted as described below. Analytics data (only if you turned analytics on) is deleted automatically
+  <strong>2 months</strong> after your last activity in the game; what remains are aggregated statistics that
+  no longer identify you. Crash reports are deleted after <strong>90 days</strong>.</p>
   <p><strong>Backups.</strong> To recover from data loss, we keep backups of our database in Google Cloud, and
   our database provider keeps a short recovery history of a few days. Data you delete, including a deleted
   account, can remain in these backups for up to <strong>90 days</strong>, after which it is deleted
@@ -188,8 +190,9 @@
     for up to 3 years after your last purchase to handle refunds and disputes (see
     <a href="#purchase-records"><em>Purchase records</em></a> under <em>Data retention</em>); if you never bought
     anything, nothing is kept. If Firebase is temporarily unavailable, we complete the
-    deletion of the Firebase user later. Residual analytics identifiers are purged according to Firebase
-    retention settings.</p>
+    deletion of the Firebase user later. The game also gives your device a new analytics ID, so analytics
+    data linked to the deleted account is no longer added to and is deleted automatically within
+    2 months.</p>
   </div>
 
   <h2>Your rights (EU/EEA — GDPR)</h2>
