@@ -281,6 +281,77 @@
         border: 1px solid #182236;
       }
 
+      /* Tester feedback (temporary — remove the section before the public launch) */
+      .feedback-form {
+        max-width: 640px;
+        margin: 0 auto;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 24px;
+      }
+      .feedback-form textarea {
+        display: block;
+        width: 100%;
+        min-height: 150px;
+        resize: vertical;
+        padding: 14px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: var(--bg2);
+        color: var(--ink);
+        font: inherit;
+      }
+      .feedback-form textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+      .feedback-form .hp {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+      .feedback-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 14px;
+      }
+      .feedback-count {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .feedback-form button {
+        padding: 12px 26px;
+        border-radius: 12px;
+        border: 0;
+        background: var(--accent);
+        color: #04120e;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        transition: opacity 0.12s ease;
+      }
+      .feedback-form button:disabled {
+        opacity: 0.45;
+        cursor: default;
+      }
+      .feedback-status {
+        margin: 14px 0 0;
+        min-height: 1.6em;
+        font-size: 15px;
+        text-align: center;
+      }
+      .feedback-status.ok {
+        color: var(--accent);
+      }
+      .feedback-status.err {
+        color: #ff6b7d;
+      }
+
       footer {
         padding: 40px 0 60px;
         text-align: center;
@@ -456,6 +527,38 @@
       </div>
     </section>
 
+    <!-- Tester feedback — temporary for the closed test; delete this section
+         (and its CSS + script) before the public launch. -->
+    <section id="feedback">
+      <div class="wrap">
+        <h2>Send us feedback</h2>
+        <p class="sub">
+          Found a bug? Something too hard, too easy, or not fun? Tell us — every
+          message is read.
+        </p>
+        <form class="feedback-form" id="feedback-form" novalidate>
+          <textarea
+            id="feedback-message"
+            name="message"
+            maxlength="2000"
+            placeholder="Write your feedback here…"
+            aria-label="Your feedback"
+            required
+          ></textarea>
+          <div class="hp" aria-hidden="true">
+            <label
+              >Website <input type="text" name="website" tabindex="-1" autocomplete="off"
+            /></label>
+          </div>
+          <div class="feedback-row">
+            <span class="feedback-count" id="feedback-count">0 / 2000</span>
+            <button type="submit" id="feedback-send" disabled>Send</button>
+          </div>
+          <p class="feedback-status" id="feedback-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+
     <footer>
       <div class="wrap">
         <div class="legal">
@@ -467,5 +570,67 @@
         <a href="mailto:dead.vector.dev@gmail.com">dead.vector.dev@gmail.com</a>
       </div>
     </footer>
+
+    <script>
+      (function () {
+        // Production backend; `?api=http://localhost:3000` points the form at a local one.
+        var API =
+          new URLSearchParams(location.search).get('api') ||
+          'https://mad-shooter-backend-4252itsarq-ew.a.run.app';
+        var form = document.getElementById('feedback-form');
+        var message = document.getElementById('feedback-message');
+        var count = document.getElementById('feedback-count');
+        var send = document.getElementById('feedback-send');
+        var status = document.getElementById('feedback-status');
+        var busy = false;
+
+        function refresh() {
+          count.textContent = message.value.length + ' / 2000';
+          send.disabled = busy || message.value.trim() === '';
+        }
+        function show(text, kind) {
+          status.textContent = text;
+          status.className = 'feedback-status ' + kind;
+        }
+
+        message.addEventListener('input', function () {
+          refresh();
+          if (status.textContent) show('', '');
+        });
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (busy || message.value.trim() === '') return;
+          busy = true;
+          refresh();
+          show('Sending…', '');
+          fetch(API + '/web-feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              message: message.value,
+              website: form.elements.website.value || undefined,
+            }),
+          })
+            .then(function (res) {
+              if (res.ok) {
+                message.value = '';
+                show('Thank you! Your feedback was sent.', 'ok');
+              } else if (res.status === 429) {
+                show('Too many messages. Please try again later.', 'err');
+              } else {
+                show('Could not send your feedback. Please try again.', 'err');
+              }
+            })
+            .catch(function () {
+              show('Could not send your feedback. Check your connection and try again.', 'err');
+            })
+            .then(function () {
+              busy = false;
+              refresh();
+            });
+        });
+      })();
+    </script>
   </body>
 </html>
